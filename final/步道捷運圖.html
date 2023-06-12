@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>步道捷運圖(正式版)</title>
+    <style>
+        /* 原始的網頁 */
+
+        .routecontainer {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            align-items: center;
+ 
+        }
+        
+
+
+        .routeoverlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1; /* 控制層級 */
+            background-color: rgba(0, 0, 0, 0.5); /* 網頁反映效果的背景色 */
+        }
+        
+        body {
+        overflow: hidden;
+        }
+        .circle {
+            position: absolute;
+            z-index: 2; /* 控制層級 */
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .circle circle {
+            transition: transform 0.3s ease;
+            cursor: pointer; /* 讓滑鼠變成手指狀態 */
+        }
+
+        .circle circle:hover {
+            transform: scale(1.1); /* 滑鼠移過時放大並且變色 */
+            fill: #f5e20fee;
+        }
+
+        .routetext {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #000;
+            font-size: 20px;
+            text-align: center;
+          }
+
+        .tooltip {
+            position: absolute;
+            padding: 10px;
+            background-color: #ffdf12;
+            border: 50px solid #ffffff; 
+            border-radius: 100px;
+            transform: translate(0px, -1300px);
+            z-index: 100; /* 設置更高的層級 */
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            font-family: "Noto Sans TC", sans-serif;           
+            
+        }
+
+    </style>
+</head>
+<body>
+    <div class="routecontainer">
+        <img src="route.png" alt="TP MRT">
+        <div class="routeoverlay"></div>
+        <!-- 軍艦岩親山步道 -->
+        <svg class="circle" style="top: 310px; left: 580px">
+            <a href="https://goo.gl/maps/KKo5epWT86uPRwcx8" target="_blank" >
+                <circle cx="20" cy="20" r="20" fill="#006400" />
+            </a>
+        </svg>
+        <div class="tooltip">
+            <h2 style="font-size: 100px;">軍艦岩親山步道 </h2>
+            <p style="font-size: 40px;">軍艦岩位於石牌榮民總醫院正北方山區，海拔185.6公尺，登山步道約3公里，全線約5.7公里，步行時間約2小時7分鐘，為大屯山系的著名山嶺。嶺上突出的巨岩聳立在層層山巒間，乍看之下如同海上艦艇，因此得名軍艦岩。日據時代分別與唭哩岸山、丹鳳山、烏尖連山，共稱為烏尖連峰，山頂岩場是座理想的攀岩練習場，也是一處相當熱門的健行路線。</p>
+            
+        </div>
+        <!-- 象山親山步道-->
+        <svg class="circle" style="top: 1120px; left: 1310px;">
+            <a href="https://goo.gl/maps/PyXKWZCXWP9zud9Y6" target="_blank" >
+                <circle cx="20" cy="20" r="20" fill="#006400"/>
+            </a>
+        </svg>
+        <div class="tooltip">
+            <h2 style="font-size: 100px;">象山親山步道</h2>
+            <p style="font-size: 40px;">山親山步道 是台北熱門登山步道之一，加上鄰近台北捷運象山站，半小時路程就能抵達攝手平台，遠眺101大樓與台北美景，很受到居民與遊客喜愛。來回約莫1小時的路程，對於新手來說挑戰難度適中。</p>
+
+        </div>
+        <!-- 劍潭山親山步道 -->
+        <svg class="circle" style="top: 580px; left: 580px">
+            <a href="https://goo.gl/maps/JB3bznhffvDVVdzL9" target="_blank">
+                <circle cx="20" cy="20" r="20" fill="#006400" />
+            </a>
+        </svg>
+        <div class="tooltip">
+            <h2 style="font-size: 100px;">劍潭山親山步道</h2>
+            <p style="font-size: 40px;">劍潭山海拔153公尺，位於台北市士林區圓山風景區，是圓山飯店後山的北稜，也是台北市最接近市中心的小山，沿著稜脊步道緩緩前行可抵達其他山岳，走起來幾乎是輕鬆自在，在交通便捷上佔有極大之優勢。</p>
+
+        </div>
+        <!-- 虎山親山步道 -->
+        <svg class="circle" style="top:970px; left:1360px">
+            <a href="https://goo.gl/maps/RtPjkKkbrftnPBf98" target="_blank">
+                <circle cx="20" cy="20" r="20" fill="#006400"  />
+            </a>
+        </svg>
+        <div class="tooltip">
+            <h2 style="font-size: 100px;">虎山親山步道</h2>
+            <p style="font-size: 40px;">有著復古感濃厚的圓形拱橋，沿途以石塊舖設步道，並設置虎山溪親水廣場，夏日戲水野餐好去處，往上爬到復興園，可眺望台北101，想要玩水爬山看風景，虎山溪步道都很適合。</p>
+
+        </div>
+        <!-- 仙跡岩親山步道 -->
+        <svg class="circle" style="top: 1410px; left: 830px">
+            <a href="https://goo.gl/maps/hHZUxp4wYoRpuRBY8" target="_blank" >
+                <circle cx="20" cy="20" r="20" fill="#006400"  />
+            </a>
+        </svg>
+        <div class="tooltip">
+            <h2 style="font-size: 100px;">仙跡岩親山步道</h2>
+            <p style="font-size: 40px;">仙跡岩雖為一座小山，但視野極好，山頂擁有一顆和台北市第一高峰七星山一樣的一等衛星控制點，可清楚遠眺台北盆地。從登山口拾級而上，沿途濃蔭密布，在不同時節來此，可觀賞到不同顏色的繽紛花朵綻放；除了景色優美外，仙跡岩的傳說也頗耐人尋味，在山頂附近的岩石上有如一雙腳印的凹洞傳說為呂洞賓所留，這也使仙跡岩更增添奇幻色彩。</p>
+
+        </div>
+        <!-- 和美山登山步道 -->
+        <svg class="circle" style="top: 1710px; left: 830px">
+            <a href="https://goo.gl/maps/VmT1TUE8jQvsrQ6A7" target="_blank" >
+                <circle cx="20" cy="20" r="20" fill="#006400"  />
+            </a>
+        </svg>
+        <div class="tooltip">
+            <h2 style="font-size: 100px;">和美山登山步道</h2>
+            <p style="font-size: 40px;">和美山又名碧潭山、大笨山，位於新店碧潭附近，海拔高度雖只有153公尺，展望卻是極好，可俯瞰碧潭的水光蕩漾，晴朗之時甚至可以將台北盆地盡收眼底。
+
+                除景色外，和美山的生態也豐富的另人驚訝，除原生植物、鳥類、蝶類、蛙類及昆蟲種類豐富外，每到四月更是滿山遍野螢火閃閃、盛況迷人，這樣的條件在都會區時屬難得可貴。</p>
+
+        </div>
+        <!-- 福州山公園登山步道 -->
+        <svg class="circle" style="top: 1330px; left: 1050px">
+            <a href="https://goo.gl/maps/7KeXqTugRvnGy4pq8" target="_blank" >
+                <circle cx="20" cy="20" r="20" fill="#006400"  />
+            </a>
+        </svg>
+        <div class="tooltip">
+            <h2 style="font-size: 100px;">福州山公園登山步道</h2>
+            <p style="font-size: 40px;">福州山位在北二高台北聯絡道的北邊，是南港山系伸向大安區裡的一隻綠手指。過往這裡曾被用作公墓及彈藥庫，因而人跡罕至，自然環境也因此保持良好。廿一世紀後，山上的公墓被闢建為「福州山公園」，山麓下的彈藥庫則搖身一變為「富陽生態公園」，這兩座用步道串連起的公園，猶如市區邊上的美麗後院，成為附近居民體驗「森呼吸」的重要場所。</p>
+
+        </div>
+        <!-- 指南宮貓空親山步道-->
+        <svg class="circle" style="top: 1620px; left: 1340px">
+        <a href="https://goo.gl/maps/6RNTyUYkYo85odxV8" target="_blank" >
+            <circle cx="20" cy="20" r="20" fill="#006400"  />
+        </a>
+        </svg>
+        <div class="tooltip">
+            <h2 style="font-size: 100px;">指南宮貓空親山步道</h2>
+            <h2 style="font-size: 100px;">指南茶路親山步道</h2>
+            <p style="font-size: 40px;">指南宮步道沿途有造型典雅的石燈籠分列步道兩旁，加上從步道入口的牌坊、途中的終南亭等，不難發現步道的興建起於日治昭和年間(1926~1945)，有著濃郁的日式和風建築風格，極為古樸典雅而珍貴。
+
+                約1200級的石階，普通民眾若想一氣呵成走完，會是相當大的考驗。幸好步階寬敞，兩旁還有櫻花樹、香楠、大葉楠等天然林夾峙，古木參天，蔭深歩道，環境清幽宜人，路旁也不時有座椅供人歇腳，因此成為登山健行、朝拜禮佛、享受芬多精洗禮的最佳路徑。
+                
+                接近指南宮的正殿途中，有部分小型商店分置步道左右，也是民眾駐足休憩的好地點。</p>
+
+        </div>
+        <!-- 關渡親山步道-->
+        <svg class="circle" style="top: 130px; left: 300px">
+            <a href="https://goo.gl/maps/tSUfYquLSqTJsFU88" target="_blank" >
+                <circle cx="20" cy="20" r="20" fill="#006400" />
+            </a>
+            </svg>
+            <div class="tooltip">
+                <h2 style="font-size: 100px;">關渡親山步道</h2>
+                <p style="font-size: 40px;">關渡平原是台北境內最大的生態溼地，放眼望去一望無際的綠色平原，成群的候鳥飛躍英姿，淡水河依偎著觀音山景象，最能感受山環水抱的大自然風光。
+
+                    位於關渡平原北邊的關渡親山步道，隨著路徑坡度的漸漸升高，可以遠眺整個台北盆地的山光水色及樓房林立交會景觀。步道前段為台北藝術大學與北台科技技術學院間的柏油路面，中段則為泥土路面，樹蔭較少、陡峭岩塊居多；至2130公尺指標處則為步道終點，這裡可連接忠義山千山步道續行，也可循往行天宮方向一般步道縮短行程。</p>
+
+            </div>
+        <!-- 貴子坑親山步道-->
+        <svg class="circle" style="top: 130px; left: 450px">
+            <a href="https://goo.gl/maps/2tqhZQhx8vDAG44u7" target="_blank" >
+                <circle cx="20" cy="20" r="20" fill="#006400"  />
+            </a>
+            </svg>
+            <div class="tooltip">
+                <h2 style="font-size: 100px;">貴子坑親山步道</h2>
+                <p style="font-size: 40px;">貴子坑親山步道位在大屯山系的西南尾稜上，這裡以地質景觀聞名。早年曾因過度開採礦石而導致水土失衡，但1970年代末期政府在此設置「貴子坑水土保持教學園區」後，歷經三十年的整治規畫，這片曾經滿目瘡夷，被當地居民形容為「鬼子坑」的小山谷，如今已擁有露營場、水土保持教學園區及親山步道等設施，成了全國知名的戶外地質教室。要想認識地球老爺爺臉上飽含歲月的皺紋，貴子坑親山步道絕對是你不可錯過的山徑。</p>
+
+            </div>
+        <!-- 中正山親山步道-->
+        <svg class="circle" style="top: 130px; left: 610px">
+            <a href="https://goo.gl/maps/PkeVnyNw1RLJp1TY6" target="_blank" >
+                <circle cx="20" cy="20" r="20" fill="#006400"  />
+            </a>
+            </svg>
+            <div class="tooltip">
+                <h2 style="font-size: 100px;">中正山親山步道</h2>
+                <p style="font-size: 40px;">中正山原名彌陀山，也叫十八份山或大竿林山，早期為紀念先總統蔣中正先生於是在南坡山麓列植林木並修剪形成「中正」二大字，而改名為中正山；中正山的登山口有7處之多，這是由其串連出來的步道特多，大都呈放射狀，山頭獨立，廣角視野稱得上一流，十分特別，位於前往十八份登山口圖中的木炭窯，更是陽明山地區極具歷史意義與價值的重要遺跡。</p>
+
+            </div>
+        <!-- 麗山橋口親山步道-->
+        <svg class="circle" style="top:970px; left:1450px">
+            <a href="https://goo.gl/maps/fX1KgNeSR7cwQaFY7" target="_blank" >
+                <circle cx="20" cy="20" r="20" fill="#006400"  />
+            </a>
+            </svg>
+            <div class="tooltip">
+                <h2 style="font-size: 100px;">麗山橋口親山步道</h2>
+                <p style="font-size: 40px;">麗山橋口親山步道位於南港公園的南方，這裡曾是依山傍水的灌溉水源之地，南港區的三大舊埤塘（後山埤、東新埤、三重埤）即位於此地，如今古埤塘不再引水，反而成為池畔垂釣、賞景、環湖散步、單車騎乘的遊山玩水之地。步道前段為北興宮步道，後段才是古意盎然的麗山橋口步道。
+
+                    此步道已有百年的歷史，曾是先民挑運米茶、來往松山（錫口）和四分子（研究院路四段）之間的捷徑，走在林間小徑、深山古道中，只見罕見的蛇木林筆筒樹及滿地的泛黃落葉，此地人煙較少，步道幽靜的氣氛讓人體會自然原始的美妙。</p>
+
+            </div>
+        <!-- 烘爐地登山步道-->
+        <svg class="circle" style="top:1570px; left:590px">
+            <a href="https://goo.gl/maps/n7REJX7LDavWtX657" target="_blank" >
+                <circle cx="20" cy="20" r="20" fill="#006400"  />
+            </a>
+            </svg>
+            <div class="tooltip">
+                <h2 style="font-size: 100px;">烘爐地登山步道</h2>
+                <h2 style="font-size: 100px;">圓通寺登山步道</h2>
+                <p style="font-size: 40px;">烘爐地位於新北市中和區南勢角後方的山區，又名「南勢角山」，標高302公尺，山中有許多寺廟，成為信徒朝聖的旅遊聖地。
+
+                    烘爐地為天上山列延伸最東端的山頭，山頂平坦開闊、視野遼闊，也吸引眾多登山健行的人到此一遊。行經北二高中和路段的開車族，可以看見山頭上巨型的土地公像。在這個位置不但可以俯視台北盆地及大漢、新店二溪，遠眺觀音、大屯火山群及淡水出海口，烘爐地更是大台北地區觀看夜景的著名旅遊勝地；沿途步道狀況良好且交通便利，適合情侶、親子同遊。</p>
+
+            </div>
+        <!-- 土城桐花公園步道-->
+        <svg class="circle" style="top:1610px; left:240px">
+            <a href="https://goo.gl/maps/Z8VbrFMn8jXMFxjn8" target="_blank" >
+                <circle cx="20" cy="20" r="20" fill="#006400"  />
+            </a>
+            </svg>
+            <div class="tooltip">
+                <h2 style="font-size: 100px;">土城桐花公園步道</h2>
+                <p style="font-size: 40px;">土城桐花公園位於土城最高峰天上山的半山腰，園區內有吊橋、立體爬網、木炭窯展示區、表演看台等休閒運動設施，並廣植廣東油桐，是每年四五月「土城桐花節」系列活動的主場地。
+
+                    附近有二十多條登山步道可串連，還能就近至承天禪寺賞景或參拜。搭乘捷運板南線至永寧站，可步行或搭接駁公車上山，是距離台北都會區最近最方便的熱門賞桐景點，十分適合親子家庭賞花觀螢、踏青同樂。</p>
+
+            </div>
+
+    </div>
+    
+    <script>
+        var circles = document.querySelectorAll('.circle circle');
+        var tooltips = document.querySelectorAll('.tooltip');
+
+        circles.forEach(function(circle, index) {
+        var tooltipTimeout; // 儲存延遲顯示的 timeout 計時器
+
+        circle.addEventListener('mouseenter', function(event) {
+            tooltipTimeout = setTimeout(function() {
+            tooltips[index].style.opacity = 1;
+            positionTooltip(tooltips[index], circle);
+            }, 400); // 延遲時間，單位為毫秒，這裡設定為 400 毫秒
+
+            circle.addEventListener('mouseleave', function(event) {
+            clearTimeout(tooltipTimeout); // 如果滑鼠離開圓形元素，清除延遲顯示的 timeout 計時器
+            tooltips[index].style.opacity = 0;
+            });
+        });
+        });
+    </script>
+</body>
+</html>

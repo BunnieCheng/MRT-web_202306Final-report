@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>夜市捷運圖(正式版)</title>
+    <style>
+        /* 原始的網頁 */
+
+        .routecontainer {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            align-items: center;
+ 
+        }
+        
+
+
+        .routeoverlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1; /* 控制層級 */
+            background-color: rgba(0, 0, 0, 0.5); /* 網頁反映效果的背景色 */
+        }
+        
+        body {
+        overflow: hidden;
+        }
+        .circle {
+            position: absolute;
+            z-index: 2; /* 控制層級 */
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .circle circle {
+            transition: transform 0.3s ease;
+            cursor: pointer; /* 讓滑鼠變成手指狀態 */
+        }
+
+        .circle circle:hover {
+            transform: scale(1.1); /* 滑鼠移過時放大並且變色 */
+            fill: #f5e20fee;
+        }
+
+        .routetext {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #000;
+            font-size: 20px;
+            text-align: center;
+          }
+
+        .tooltip {
+            position: absolute;
+            padding: 10px;
+            background-color: #ffdf12;
+            border: 50px solid #ffffff; 
+            border-radius: 100px;
+            transform: translate(0px, -1300px);
+            z-index: 100; /* 設置更高的層級 */
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            font-family: "Noto Sans TC", sans-serif;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="routecontainer">
+        <img src="route.png" alt="TP MRT">
+        <div class="routeoverlay"></div>
+        <!-- 臨江夜市 -->
+        <svg class="circle" style="top: 1120px; left: 1030px;">
+            <a href="https://goo.gl/maps/y5V7PpBv2EaD5X187" target="_blank" >
+                <circle cx="20" cy="20" r="20" fill="#000000" />
+            </a>
+        </svg>
+        <div class="tooltip">
+            <h2 style="font-size: 100px;">臨江夜市</h2>
+            <p style="font-size: 40px;">以前叫通化夜市，擁有許多米其林必比登與米其林餐盤推薦小吃，且因鄰近百貨、商辦、飯店林立的信義區，是許多上班族、外食族的廚房，</p>
+            <p style="font-size: 40px;">營業時間:24hr</p>
+            <p style="font-size: 40px;">推薦美食:上海生煎包/貼北回木瓜牛奶uckyMchi傳奇地瓜球、梁記滷味、蘇媽媽湯圓、無名芋餅
+                寧府麻辣鴨血豆腐、一口金酥臭豆腐、鄭記四神湯、楊家果汁專門、御品元冰湯圓、記小、今日壽司店、紅花麻辣
+                鹽水雞、無名鹽水雞、口天豆腐、林板燒、正好鮮肉小湯包、愛玉之夢遊仙草、台灣塩酥雞、格登炸雞
+                </p>
+        </div>
+
+
+
+        <!-- 師大夜市 -->
+        <svg class="circle" style="top: 1230px; left: 720px">
+            <a href="https://goo.gl/maps/fL6eTYofxKFuPtqd8" target="_blank">
+                <circle cx="20" cy="20" r="20" fill="#000000" />
+            </a>
+        </svg>
+        <div class="tooltip">
+            <h2 style="font-size: 100px;">師大夜市</h2>
+            <p style="font-size: 40px;"></p>
+            <p style="font-size: 40px;">每日16:00-23:00</p>
+            <p style="font-size: 40px;">推薦美食:師園鹹酥雞、温州街蘿蔔絲餅、雞房重地脆皮鹹水雞-創始總店、騎士暮Chesschicke-雞排專賣店、古早茶坊、
+                阿諾可麗餅好好味港式菠蘿包、Good Drik沙VnViC大利燉、平安京事、台北價
+                滷味</p>
+        </div>
+
+        <!-- 饒河夜市 -->
+        <svg class="circle" style="top: 865px; left: 1295px">
+            <a href="https://goo.gl/maps/meW4vL9D3G2u1raJ6" target="_blank">
+                <circle cx="20" cy="20" r="20" fill="#000000" />
+            </a>
+        </svg>
+        <div class="tooltip">
+            <h2 style="font-size: 100px;">饒河夜市</h2>
+            <p style="font-size: 40px;"></p>
+            <p style="font-size: 40px;">營業時間:每日17:00-23:00</p>
+            <p style="font-size: 40px;">推薦美食:東發號蚵仔麵線、紅燒牛肉/牛雜湯、陳黄燉骨、麻寶电、福州世祖胡椒餅、阿國味、后庄排骨酥麵
+                小明冰果室加賀魷魚大王、老芋仔芋頭酥、身煎百上海鍋生煎包、島屋圓圓燒、金山鴨頭、好腸好嚐香腸&大腸
+                圈、金林燉排骨、品元冰湯圓、菓匠銅燒、杏村、名彭豆腐、心心港式腸粉、甘泉豆花、安師傅冰火菠蘿
+                油、阿根脆皮臭豆腐</p>
+        </div>
+       
+        <!-- 延三夜市 -->
+        <svg class="circle" style="top: 710px; left: 510px">
+            <a href="https://goo.gl/maps/roaRaHWUgp5ZUxz79" target="_blank">
+                <circle cx="20" cy="20" r="20" fill="#000000" />
+            </a>
+        </svg>
+        <div class="tooltip">
+            <h2 style="font-size: 100px;">延三夜市</h2>
+            <p style="font-size: 40px;"></p>
+            <p style="font-size: 40px;">營業時間:每日18:00-00:00</p>
+            <p style="font-size: 40px;">推薦美食:大橋頭米糕、三重知高飯、嘉義海產粥、大橋頭肉飯、無名蛋餅、施家鮮肉湯圓、灶頂原汁排骨湯高麗菜
+                飯、永吉樂羊仔湯屋、新營人牛肉、旗新竹米粉、祥記純燒麻、大橋頭大腸煎、汕頭原汁牛肉麵、老牌張豬腳、嘉義
+                雞肉飯、阿美古早味、土庫鴨肉富延三店、炒麵專家、葉家五香雞捲
+                </p>
+        </div>
+        <!-- 大龍街夜市 -->
+        <svg class="circle" style="top: 650px; left: 580px;">
+            <a href="https://goo.gl/maps/7Se2YHXB2ZW2bq5U6" target="_blank" >
+                <circle cx="20" cy="20" r="20" fill="#000000" />
+            </a>
+        </svg>
+        <div class="tooltip">
+            <h2 style="font-size: 100px;">大龍江夜市</h2>
+            <p style="font-size: 40px;"></p>
+            <p style="font-size: 40px;">營業時間:每日16:00-00:00</p>
+            <p style="font-size: 40px;">推薦美食:方滷肉飯、田沙茶羊肉、新口味酥雞、大街炸蛋餅&重慶豆漿蛋餅、街菇肉粥、哥品、茶
+                屋、郭記大塊肉羹、第一土鵝肉、阿仁炒飯、梅滿美食
+                </p>
+        </div>
+        <!-- 南機場夜市 -->
+        <svg class="circle" style="top: 1000px; left: 375px;">
+            <a href="https://goo.gl/maps/J1U8gYBUAgTECwaf7" target="_blank" >
+                <circle cx="20" cy="20" r="20" fill="#000000" />
+            </a>
+        </svg>
+        <div class="tooltip">
+            <h2 style="font-size: 100px;">南機場夜市</h2>
+            <p style="font-size: 40px;"></p>
+            <p style="font-size: 40px;">營業時間:每日17:00-00:00</p>
+            <p style="font-size: 40px;">推薦美食:曉迪筒仔米糕、山內雞肉飯、師傅上海生煎包、台灣第一家碳烤雞排、八棟圓仔湯、馬蔥餅/馬祖奶茶、好吃炸
+                雞、厚道井飯、銘鄉豬高飯、橘太郎爆漿雞蛋糕、無名手推餅、海享吃精緻物、來水餃、南機芋頭大王、老園
+                現蒸豆腐、豬榮仔、玉米家烤玉米、旺季潤餅、阿男麻油雞</p>
+        </div>
+        <!-- 士林夜市 -->
+        <svg class="circle" style="top: 510px; left: 580px">
+            <a href="https://goo.gl/maps/aymsm8up4Ap9Mw4i7" target="_blank">
+                <circle cx="20" cy="20" r="20" fill="#000000" />
+            </a>
+        </svg>
+        <div class="tooltip">
+            <h2 style="font-size: 100px;">士林夜市</h2>
+            <p style="font-size: 40px;"></p>
+            <p style="font-size: 40px;">營業時間:每日16:00-00:00</p>
+            <p style="font-size: 40px;">推薦美食:好朋友涼麵、鍾記原上海生包、友全、阿麵線、誠仔煎、老盾邊麻辣涼麵、家鄉碳烤香雞
+                排、王子起司馬鈴薯、奶茶媽媽、記碳烤肉捲、忠誠仔煎、道樂拉麵、來轉、富台式涮涮鍋、哈哈羅55泰式船
+                麵、林生炒羊肉深夜流氓热炒道樂屋台·井川日本串燒專賣、花藏雪手作雪
+                </p>
+        </div>
+        <!-- 艋舺夜市 -->
+        <svg class="circle" style="top: 1000px; left: 425px;">
+            <a href="https://goo.gl/maps/9QjiSYEWE9y8F2B86" target="_blank" >
+                <circle cx="20" cy="20" r="20" fill="#000000" />
+            </a>
+        </svg>
+        <div class="tooltip">
+            <h2 style="font-size: 100px;">艋舺夜市</h2>
+            <p style="font-size: 40px;"></p>
+            <p style="font-size: 40px;">營業時間:每日18:00-03:00</p>
+            <p style="font-size: 40px;">推薦美食:蔥抓餅、港旗魚黑輪、頂級甜不辣、丸田碟燒、懷念愛冰、北港甜湯、北港甜湯、傳奇黃金地瓜球、
+                紅豆餅、阿義肉飯、原汁排骨湯二店、龍都冰果專業家、零冰鋪、蘇家肉园油粿、原西園橋下燒餅油條、涼粉、施
+                家脆皮蚵仔煎
+                </p>
+        </div>
+        <!-- 華西街夜市 -->
+        <svg class="circle" style="top: 1035px; left: 400px;">
+            <a href="https://goo.gl/maps/WENpH5XZqV2KNH7x5" target="_blank" >
+                <circle cx="20" cy="20" r="20" fill="#000000" />
+            </a>
+        </svg>
+        <div class="tooltip">
+            <h2 style="font-size: 100px;">華西街夜市</h2>
+            <p style="font-size: 40px;"></p>
+            <p style="font-size: 40px;">營業時間:每日16:00-00:00</p>
+            <p style="font-size: 40px;">推薦美食:台南擔仔麵、小王煮瓜、阿義滷肉飯、源芳包、昶鴻麵店、阿猜嬤甜湯、武林萌主福州元祖胡椒餅、三六食
+                粑、東石順仔煎、剝骨鵝肉、北海道魷魚、大肉羹、順的店、華西街鹹粥</p>
+        </div>
+        <!-- 西門町夜市 -->
+        <svg class="circle" style="top: 970px; left: 490px;">
+            <a href="https://goo.gl/maps/DkQRwLknjhbimYoN9" target="_blank" >
+                <circle cx="20" cy="20" r="20" fill="#000000" />
+            </a>
+        </svg>
+        <div class="tooltip">
+            <h2 style="font-size: 100px;">西門町夜市</h2>
+            <p style="font-size: 40px;"></p>
+            <p style="font-size: 40px;">營業時間:每日17:00-22:00</p>
+            <p style="font-size: 40px;">推薦美食:天天利美食坊、阿線、新港餐廳、鍋台式、Ma美式餐廳、味珍意麵滷味、辣頂級麻辣鴛
+                意火鍋、旺角石頭火鍋、幸福堂、清黃牛肉館、富宏牛肉、西門店、蜂大咖啡、千暉鵝肉店、老天祿滷味、雪王冰
+                淇淋、豆店排骨酥麵門拉、萍酸菜麵、記茶餐療、南堂蜂蜜蛋糕、金滿園排骨、西門麵店、施福
+                建好吃雞肉、玉林雞腿大王
+                </p>
+        </div>
+        <!-- 雙城街夜市 -->
+        <svg class="circle" style="top: 710px; left: 710px;">
+            <a href="https://goo.gl/maps/7xDEdUJxzgLDin6y5" target="_blank" >
+                <circle cx="20" cy="20" r="20" fill="#000000" />
+            </a>
+        </svg>
+        <div class="tooltip">
+            <h2 style="font-size: 100px;">雙城街夜市</h2>
+            <p style="font-size: 40px;"></p>
+            <p style="font-size: 40px;">營業時間:每日17:00-00:00</p>
+            <p style="font-size: 40px;">推薦美食黃記肉飯、阿富海鮮粥、十巷咖哩、TUTTOBELO、阿圖麻油雞、麵屋壹慶、紗汀娜好食、綻1852牛排館、
+                嘉義雞肉飯、阿萬鵝肉、十九記麻辣燙、高記冰品、市檬愛、晴光紅豆餅、晴光潤餅捲、丁香豆花
+                </p>
+        </div>
+        
+         <!-- 寧夏夜市 -->
+         <svg class="circle" style="top: 790px; left: 580px">
+            <a href="https://googl/maps/z8QHWG2pVp2yUhcH9" target="_blank" >
+                <circle cx="20" cy="20" r="20" fill="#000000" />
+            </a>
+        </svg>
+        <div class="tooltip">
+            <h2 style="font-size: 100px;">寧夏夜市</h2>
+            <p style="font-size: 40px;"></p>
+            <p style="font-size: 40px;">營業時間:每日17:00-1:00</p>
+            <p style="font-size: 40px;">推薦美食:詹記雞腳、慈音古早味阿婆、賴雞蛋仔煎、冰霖古早味豆花、蓮飲料吧、鹽烤杏鮑菇、葉記青草茶、豬
+                肝榮任、祥記橋頭客家純糖麻、二代鵝肉、牛媽媽、王家生炒魚、洪記包、方家雞肉飯、林記臭豆腐、鴻記蔥捲
+                餅、劉芋仔、林振燒、旺來糕、環邊仔煎、環記麻油雞、里長伯臭豆腐、馥陽鍋貼、千單食堂</p>
+        </div>
+        <!-- 遼寧街夜市 -->
+        <svg class="circle" style="top: 865px; left: 940px">
+            <a href="https://goo.gl/maps/JAdYzcwejQcU2cjc7" target="_blank" >
+                <circle cx="20" cy="20" r="20" fill="#000000" />
+            </a>
+        </svg>
+        <div class="tooltip">
+            <h2 style="font-size: 100px;">遼寧街夜市</h2>
+            <p style="font-size: 40px;"></p>
+            <p style="font-size: 40px;">營業時間:每日16:00-21:00</p>
+            <p style="font-size: 40px;">推薦美食:芳麵食馆、茂園、徐人家格登炸雞、小張龜山岛海產、鵝肉城活海鲜、客家自製湯圓、又一村水餃麵食
+                館、四鄉五島馬祖麵店、黑麻、正記麻油腰只、三好一公道涼麵
+                </p>
+        </div>
+        <!-- 景美夜市 -->
+        <svg class="circle" style="top: 1410px; left: 830px">
+            <a href="https://goo.gl/maps/xiTCXdf3T8jPuBix8" target="_blank" >
+                <circle cx="20" cy="20" r="20" fill="#000000" />
+            </a>
+        </svg>
+        <div class="tooltip">
+            <h2 style="font-size: 100px;">景美夜市</h2>
+            <p style="font-size: 40px;"></p>
+            <p style="font-size: 40px;">營業時間:每日16:00-00:00</p>
+            <p style="font-size: 40px;">推薦美食:越南河內小吃美上海生煎包鄭家碳烤、鵝媽媽切仔麵、張阿姨豬血糕、快乐QQ球、光頭哥山豬肉、香腸·
+                陳記潤餅捲、黑寶東山鴨頭、冰冰黑砂蜜包冰、張媽媽香雞排、阿昌線臭豆腐、楊家手工水餃、義興樓、美米粉湯、
+                美豆花、好吃水雞、美鐵板燒、高記雙管四神湯</p>
+        </div>
+         <!-- 公館夜市 -->
+         <svg class="circle" style="top: 1290px; left: 780px;">
+            <a href="https://goo.gl/maps/XwywQxAZKmxVeQ2Z9" target="_blank" >
+                <circle cx="20" cy="20" r="20" fill="#000000" />
+            </a>
+        </svg>
+        <div class="tooltip">
+            <h2 style="font-size: 100px;">公館夜市</h2>
+            <p style="font-size: 40px;">是台北南區重要的交通樞紐，多線公車與捷運松山新店線在此匯集，加上附近有多所大學校區，造就了公館商圈有許多經濟美味的小吃與餐廳</p>
+            <p style="font-size: 40px;">營業時間:每日15:00-23:45</p>
+            <p style="font-size: 40px;">推薦美食:公館活蝦、菊味鍋物、無名車輪餅店、劉家水煎包、佳興魚丸店、龍潭豆花、泰
+                國小館、公館宜蔥餅、蔬菜大蛋餅、無名羹、回味粉煎餅、雄記蔥抓餅、龍哥無骨雞排、全素食地瓜球、記古
+                早味蔥蛋餅、藍家包、祥記美食、臺一牛奶大王、左巴好室好事、鳳城燒臘、大盛豬排專門店
+                </p>
+        </div>
+
+        <!-- 737夜市 -->
+        <svg class="circle" style="top: 580px; left: 1330px">
+            <a href="https://goo.gl/maps/EsY9mJoYYenaksj47" target="_blank" >
+                <circle cx="20" cy="20" r="20" fill="#000000" />
+            </a>
+        </svg>
+        <div class="tooltip">
+            <h2 style="font-size: 100px;">737夜市</h2>
+            <p style="font-size: 40px;"></p>
+            <p style="font-size: 40px;">營業時間:每日16:00-22:00</p>
+            <p style="font-size: 40px;">推薦美食:佳蔥油餅、太郎血糕、小頭雞飯、居和湯包、古城古早味麵、可頌圈圈、法式微笑奶油紅豆餅、737麻
+                油雞、湖涂私房料理、大陳記古早味麵店、炭烤酥雞、737手工紅豆湯圓(冬季限定)
+                </p>
+        </div>
+        <!-- 石牌夜市 -->
+        <svg class="circle" style="top: 310px; left: 580px">
+            <a href="https://goo.gl/maps/ecSn3sp6uGXP2EyY8" target="_blank" >
+                <circle cx="20" cy="20" r="20" fill="#000000" />
+            </a>
+        </svg>
+        <div class="tooltip">
+            <h2 style="font-size: 100px;">石牌夜市</h2>
+            <p style="font-size: 40px;"></p>
+            <p style="font-size: 40px;">營業時間:每日16:00-01:00</p>
+            <p style="font-size: 40px;">推薦美食:彈芽麵阿財水餃專賣店、石牌生煎包、記大腸麵線麻辣豆腐、石牌小李、陳季炸雞、水伯古早豆
+                花、蕭家牛肉麵、阿凱士林香腸切仔麵、石牌無名水煎包、文化脆皮車輪餅、豆花林</p>
+        </div>
+    </div>
+    
+    <script>
+        var circles = document.querySelectorAll('.circle circle');
+        var tooltips = document.querySelectorAll('.tooltip');
+
+        circles.forEach(function(circle, index) {
+        var tooltipTimeout; // 儲存延遲顯示的 timeout 計時器
+
+        circle.addEventListener('mouseenter', function(event) {
+            tooltipTimeout = setTimeout(function() {
+            tooltips[index].style.opacity = 1;
+            positionTooltip(tooltips[index], circle);
+            }, 400); // 延遲時間，單位為毫秒，這裡設定為 400 毫秒
+
+            circle.addEventListener('mouseleave', function(event) {
+            clearTimeout(tooltipTimeout); // 如果滑鼠離開圓形元素，清除延遲顯示的 timeout 計時器
+            tooltips[index].style.opacity = 0;
+            });
+        });
+        });
+    </script>
+</body>
+</html>

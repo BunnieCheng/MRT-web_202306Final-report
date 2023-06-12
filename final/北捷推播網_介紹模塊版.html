@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>北捷推播網(有地圖版)</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+      <style>/* 頁首的css設定  Sticky/Affix Navbar*/
+        body {
+          margin: 0;
+          font-family: 'Noto Sans TC, sans-serif;'
+        }
+        
+        .header {
+          background-color: #000000;
+          padding: 0.5px;
+          text-align: center;
+
+        }
+
+        #navbar {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          overflow: hidden;
+          background-color: #fae717;
+          font-weight: bold;
+          z-index: 10;
+        }
+
+        #navbar a {
+          float: left;
+          display: block;
+          color: #000000;
+          text-align: center;
+          padding: 14px 100px;
+          text-decoration: none;
+          font-size: 100px;
+          /* border-right: 10px solid #000000; */
+        }
+
+        #navbar a:hover {
+          background-color: #ffffff;
+          color: #fae717;
+        }
+
+        .content {
+          padding: 16px;
+        }
+
+        .sticky {
+          position: fixed;
+          top: 0;
+          width: 100%;
+        }
+
+        .sticky + .content {
+          padding-top: 60px;
+        }
+        </style>
+        <style>
+        .container {
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+            padding: 1%;
+          }
+        </style>
+        <style>/* Team Members CSS */
+
+          * {
+            box-sizing: border-box;
+          }
+          
+          .teamrow {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+          }
+          
+          .teamcolumn {
+            flex: 0 1 auto;
+            padding: 100px;;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+          
+          .teamcontainer {
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+            display: flex;
+            justify-content: center;
+            /* text-align: center; */
+            align-items: center;
+            padding: 5%;
+          }
+          
+          .teamimage {
+            display: block;
+            max-width: 1200px;
+            max-height: 900px;
+            border-radius: 10%;
+          }
+          
+          .overlay {
+            position: absolute;
+            bottom: 0;
+            background: rgb(0, 0, 0);
+            background: rgba(0, 0, 0, 0.434);
+            /* Black see-through */
+            color: #f1f1f1;
+            width: 100%;
+            transition: .5s ease;
+            opacity: 0;
+            color: white;
+            font-size: 50px;
+            padding: 350px;
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            pointer-events: none;
+          }
+          
+          .teamcontainer:hover .overlay {
+            opacity: 1;
+          }
+          
+          @media only screen and (max-width: 768px) {
+            .column {
+              flex: 0 0 50%;
+            }
+          }
+          
+          @media only screen and (max-width: 576px) {
+            .column {
+              flex: 0 0 100%;
+            }
+          }
+        </style>
+        
+        <style >
+            .routeimage {
+                display: block;
+                max-width: 900px;
+                max-height: 900px;
+                }
+            .no-scroll {
+                overflow: hidden;
+            }
+        </style>     
+
+        <!-- /* footer的css Create a Fixed Footer*/ -->
+        <style >
+          .footer {
+            position: relative;
+            padding: 40px;
+            width: 100%;
+            background-color: rgb(0, 0, 0);             
+            text-align: center;
+            
+            
+          }
+          .footer a {
+            font-size: 75px;
+            text-decoration: none;
+          }
+          </style>
+
+          <!-- 終極返回上方 -->
+          <style>
+            #back-to-top {
+                width: 200px;
+                height: 200px;
+                background-color: #fdfd1a;
+                border-radius: 50%;
+                position: fixed;
+                bottom: 120px;
+                right: 120px;
+                cursor: pointer;
+                display: none;
+                overflow: hidden;
+                animation: bounce 1s infinite;
+            }
+  
+            #back-to-top::before {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -40%) rotate(135deg);
+                width: 60px;
+                height: 60px;
+                border: 30px solid #000000;
+                border-top: none;
+                border-right: none;
+            }
+            @keyframes bounce {
+                  0% {
+                    transform: translateY(0);
+                  }
+                  50% {
+                    transform: translateY(-100px);
+                  }
+                  100% {
+                    transform: translateY(0);
+                  }
+            }
+
+            </style>
+            
+
+  </head>
+
+  <body>
+    <div class="header">
+      <h1 style="color: #ffffff; font-size:300px;">捷運推播網</h1>
+    </div>
+
+    <!-- Navigation -->
+    <div id="navbar" href="javascript:void(0)">
+      <a href="#action">夜市</a>
+      <a href="#model">戶外休閒</a>
+      <a href="#feeback">觀光景點</a>
+      <a href="#intro">團隊介紹</a>
+    </div>
+    <section >
+          <div class="subway-map">
+        <!-- 在此放置您的動態地圖內容，例如使用 iframe 元素嵌入外部網頁 -->
+        <iframe src="https://www.youtube.com/embed/m-ywwDHyxhw?autoplay=1" frameborder="0" width="100%" height="2400"></iframe>
+      </div>
+    </section>
+
+    <!-- team action -->
+    <div id="action" >
+      <div>
+        <section style="background-color:  rgb(0, 0, 0);color: #f1f1f1;">
+          <h1 style="text-align: center;font-size: 100px;margin-top: 0;">夜市</h1>
+        </section>
+        <div class="container">
+            <object class="no-scroll" data="file:///C:/Users/bunni/OneDrive/%E6%A1%8C%E9%9D%A2/%E7%A2%A9%E5%A3%AB/%E7%A2%A9%E4%B8%80%E4%B8%8B/MindW%20website/final/%E5%A4%9C%E5%B8%82%E6%8D%B7%E9%81%8B%E5%9C%96.html"
+             width="100%" height="1800px"></object>
+        </div>
+      </div>
+    </div>
+
+    <!-- business model-->
+    <div id="model">
+      <div>
+        <section style="background-color: rgb(0, 0, 0);color: #f1f1f1;">
+          <h1 style="text-align: center; font-size: 100px">戶外休閒</h1>
+        </section>
+        <div class="container">
+            <object data="file:///C:/Users/bunni/OneDrive/%E6%A1%8C%E9%9D%A2/%E7%A2%A9%E5%A3%AB/%E7%A2%A9%E4%B8%80%E4%B8%8B/MindW%20website/final/%E6%AD%A5%E9%81%93%E6%8D%B7%E9%81%8B%E5%9C%96.html"
+             width="1800px" height="1800px"></object>
+        </div>
+      </div>
+    </div>
+
+      <!-- feeback-->
+    <div id="feeback" >
+      <div>
+      <section style="background-color: rgb(0, 0, 0);color: #f1f1f1;">
+        <h1 style="text-align: center;font-size: 100px">觀光景點</h1>
+      </section>
+      <div class="container">
+        <object data="file:///C:/Users/bunni/OneDrive/%E6%A1%8C%E9%9D%A2/%E7%A2%A9%E5%A3%AB/%E7%A2%A9%E4%B8%80%E4%B8%8B/MindW%20website/final/%E6%99%AF%E9%BB%9E%E6%8D%B7%E9%81%8B%E5%9C%96.html" 
+        width="1800px" height="1800px"></object>
+        </div>
+      </div>
+    </div>
+
+      
+    <!-- team Description -->
+    <div id="intro" > 
+      <div>
+        <br>
+        <br>
+      <section style="background-color:  rgb(0, 0, 0);">
+          <div class="teamrow" style="color: #f1f1f1;font-size: 50px">
+            <br>
+            <h1 >團隊介紹</h1>
+          </div>
+          <br>
+          <div class="teamrow" style="color: #f1f1f1;font-size: 50px">
+          <article style="margin:0 500px;font-family=Noto Sans TC bold;  text-align: center;">帶給大家更直覺的選擇方式<br>悠遊在台北</article>
+        </div>
+            <div class="teamrow">
+                <div class="teamcolumn">
+                    <div class="teamcontainer">
+                        <div class="section">'[.]'
+                            <img src="bunniepic.png" alt="Bunnie" class="teamimage">
+                        </div>
+                            <div class="overlay">Bunnie</div>
+                    </div>
+                </div>
+                <div class="teamcolumn">
+                    <div class="teamcontainer">
+                        <div class="section">
+                        <img src="lindapic.png" alt="Linda" class="teamimage">
+                        </div>
+                        <div class="overlay">Linda</div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <br>
+    
+    <!-- Footer -->
+
+    <div class="footer">
+      <a href="https://www.hotaimotor.com.tw/Dreamfighter/index.html" target="_blank" style="color: #f2f2f2; font-weight: bold;"  >Mind∞W</a>
+      <p style="color: #f2f2f2; font-size: 50px" >© 2023 Mind∞W.  All rights reserved.</p>
+    </div>
+
+    <!-- 終極返回上方 -->
+    <div id="back-to-top"></div>
+
+
+    <!-- /* Navigation的判斷式 讓她永遠在上方*/ -->
+    <script>
+      window.onscroll = function() {myFunction()};
+          
+      var navbar = document.getElementById("navbar");
+      var sticky = 300; // 調整此值以加快 navbar 出現的速度
+          
+      function myFunction() {
+        if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky")
+            } else {
+            navbar.classList.remove("sticky");
+            }
+          }
+    </script>
+    <!-- 終極回上的JS -->
+    <script>
+      window.addEventListener('scroll', function() {
+          var backToTopButton = document.getElementById('back-to-top');
+          if (window.pageYOffset > 100) {
+              backToTopButton.style.display = 'block';
+          } else {
+              backToTopButton.style.display = 'none';
+          }
+      });
+      
+      document.getElementById('back-to-top').addEventListener('click', function() {
+          window.scrollTo({
+              top: 0,
+              behavior: 'smooth'
+          });
+      });
+      </script>
+
+  </body>
+</html>

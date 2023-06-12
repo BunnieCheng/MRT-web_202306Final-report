@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>夜市捷運圖(正式版)</title>
+    <style>
+        /* 原始的網頁 */
+
+        .routecontainer {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            align-items: center;
+ 
+        }
+        
+
+
+        .routeoverlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1; /* 控制層級 */
+            background-color: rgba(0, 0, 0, 0.5); /* 網頁反映效果的背景色 */
+        }
+        
+        body {
+        overflow: hidden;
+        }
+        .circle {
+            position: absolute;
+            z-index: 2; /* 控制層級 */
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .circle circle {
+            transition: transform 0.3s ease;
+            cursor: pointer; /* 讓滑鼠變成手指狀態 */
+        }
+
+        .circle circle:hover {
+            transform: scale(1.1); /* 滑鼠移過時放大並且變色 */
+            fill: #f5e20fee;
+        }
+
+        .routetext {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #000;
+            font-size: 20px;
+            text-align: center;
+          }
+
+        .tooltip {
+            position: absolute;
+            padding: 10px;
+            background-color: #ffdf12;
+            border: 50px solid #ffffff; 
+            border-radius: 100px;
+            transform: translate(0px, -1300px);
+            z-index: 100; /* 設置更高的層級 */
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            font-family: "Noto Sans TC", sans-serif;
+        }
+        .tooltip h2 {
+            margin-bottom: 0em;
+            margin-top: 0em;
+        }
+
+        .tooltip p {
+        margin-top: 0.5em;
+        line-height: 1.5;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="routecontainer">
+        <img src="route.png" alt="TP MRT">
+        <div class="routeoverlay"></div>
+        <!-- 國立中正紀念堂 -->
+        <svg class="circle" style="top: 1120px; left: 610px;">
+            <a href="https://goo.gl/maps/LFRvmjVorN7Yeatt5" target="_blank" >
+                <circle cx="20" cy="20" r="20" fill="#000000" />
+            </a>
+        </svg>
+        <div class="tooltip">
+            <h2 style="font-size: 100px;">國立中正紀念堂</h2>
+            <p style="font-size: 40px;">中正紀念堂是位於中華民國臺北市中正區的國家紀念建築，是中華民國政府為紀念已故前總統蔣中正而興建，為眾多紀念蔣中正的建築中規模最大者，落成以來即成為臺北重要地標與觀光景點之一。管理機關為中華民國文化部轄下的「國立中正紀念堂管理處」。</p>
+           
+        </div>
+        <!-- 國立故宮博物院 -->
+        <!-- 士林官邸 -->
+        <svg class="circle" style="top: 510px; left: 580px;">
+            <a href="https://goo.gl/maps/kFgRGp4PxcmjNF1L8" target="_blank">
+                <circle cx="20" cy="20" r="20" fill="#000000" />
+            </a>
+        </svg>
+        <div class="tooltip">
+            <h2 style="font-size: 100px;">國立故宮博物院</h2>
+            <p style="font-size: 40px;">國立故宮博物院於1965年在外雙溪落成，中國宮殿式的建築，一至三樓為展覽陳列空間，四樓為休憩茶座「三希堂」。 藏有全世界最多的中華藝術寶藏，收藏品主要承襲自宋、元、明、清四朝，幾乎涵蓋了整部五千年的中國歷史，數量近70萬件，使國立故宮博物院擁有「中華文化寶庫」的美名。</p>
+            <h2 style="font-size: 100px;">士林官邸</h2>
+            <p style="font-size: 40px;">士林官邸坐落於士林區中山北路五段與福林路口東南側。 原來是園藝管理所（前身為士林園藝實驗分所）的一部份，在國民政府遷台後，民國39年（西元1950年），蔣中正總統的官邸便設於此，從此士林官邸便成為臺北市民眼中神聖神秘且不可親近的禁地。</p>
+            
+        </div>
+        <!-- 陽明山國家公園 -->
+        <svg class="circle" style="top: 580px; left: 580px;">
+            <a href="https://goo.gl/maps/Kyh8XgbN61LxfEgA9" target="_blank" >
+                <circle cx="20" cy="20" r="20" fill="#000000" />
+            </a>
+        </svg>
+        <div class="tooltip">
+            <h2 style="font-size: 100px;">陽明山國家公園 </h2>
+            <p style="font-size: 40px;">陽明山國家公園緊臨臺北都會區，全區以大屯火山群彙為主，面積約11,338公頃，由內政部營建署陽明山國家公園管理處管理，因火山活動造成的錐狀與鐘狀火山體、火口湖、硫氣孔、地熱與溫泉，具有研究及娛樂價值，受季風影響，植物相兼具高草原、矮草原、闊葉樹林、亞熱帶雨林與水生植物群落，孕育臺灣水韭、大屯杜鵑、蝴蝶與鳥類，陽明山公園栽植的櫻花及杜鵑，使本區成為臺北近郊最吸引人的賞花場所。</p>
+        </div>
+        <!-- 臺北龍山寺 -->
+        <!-- 臺北孔廟-->
+        <!-- 臺北當代藝術館 -->
+        <svg class="circle" style="top: 650px; left: 580px;">
+            <a href="https://goo.gl/maps/qQuVn62dcDtBDRbw8" target="_blank">
+                <circle cx="20" cy="20" r="20" fill="#000000" />
+            </a>
+        </svg>
+        <div class="tooltip"style="transform: translate(0px, -1600px);">
+            <h2 style="font-size: 100px;">臺北龍山寺</h2>
+            <p style="font-size: 40px;">臺北市士林區大東路、大南路、華山路、基河路口艋舺龍山寺，也稱萬華龍山寺，是位於臺灣艋舺富民里的觀音寺，為清治時期臺北城泉州三邑人的信仰中心，近代成為外國旅客觀光景點，今建築列為國定古蹟。</p>
+            <h2 style="font-size: 100px;">臺北孔廟 </h2>
+            <p style="font-size: 40px;">臺北孔子廟，又稱大龍峒孔廟，是位於臺灣臺北市大同區保安里、鄰近大龍峒保安宮的孔廟，由鹿港辜家、陳悅記家族獻地，自臺灣日治時期的1925年開始規劃，以替代臺北府文廟，建物占地約四千多坪，1927年動工，1939年竣工。 建築為泉州風格，總工程師王益順，1990年代被列為直轄市定古蹟。</p>
+            <h2 style="font-size: 100px;">臺北當代藝術館 </h2>
+            <p style="font-size: 40px;">位於台北南西商圈的「台北當代藝術館」，落成於1921年，原為日治時期專供日本人子弟受教育的「建成小學校」，1996年被登錄為市定古蹟。不只紅磚式的外牆很受到網美青睞，更新速度極快的各種藝術展覽，更是受到許多熱愛藝術的年輕學子、文青網美的喜愛，強調「茍日新、日日新、又日新」，追求藝術的更多的可能。</p>
+               
+        </div>
+        <!-- 新北投溫泉區 -->
+        <svg class="circle" style="top: 130px; left: 530px">
+            <a href="https://goo.gl/maps/ACCEUpGFgzMUG1Ad8" target="_blank">
+                <circle cx="20" cy="20" r="20" fill="#000000" />
+            </a>
+        </svg>
+        <div class="tooltip">
+            <h2 style="font-size: 100px;">新北投溫泉區 </h2>
+            <p style="font-size: 40px;">北投溫泉區泛指地熱谷、龍鳳、鳳凰、湖山里、行義路等十餘處。而狹義的「北投溫泉區」主要是指環繞「北投公園」四周的中山路、光明路、新民路、泉源路一帶，此地溫泉旅館規模較大、數量最為集中，自然人文資源也最豐富。</p>
+            </div>
+        <!-- 台北101 -->
+        <!-- 四四南村-->
+        <svg class="circle" style="top: 1120px; left: 1170px;">
+            <a href="https://goo.gl/maps/MsD88TXLLa8bCSdF6" target="_blank">
+                <circle cx="20" cy="20" r="20" fill="#000000" />
+            </a>
+        </svg>
+        <div class="tooltip">
+            <h2 style="font-size: 100px;">台北101 </h2>
+            <p style="font-size: 40px;">TAIPEI 101座落於台北最菁華地段，是國內建築界有史以來最大的工程專案。 該專案主要由國內十四家企業共同組成的台北金融大樓股份有限公司，與國內外專業團隊聯手規劃，並由國際級建築大師李祖原精心設計，超越單一量體的設計觀，以吉祥數字「八」（「發」的諧音），作為設計單元。</p>
+            <h2 style="font-size: 100px;">四四南村 </h2>
+            <p style="font-size: 40px;">四四南村是國共內戰時期的產物，也是臺北地區的第一個眷村，因為位於日本四四兵工廠之南方，故被稱為「四四南村」。 該園區中有一座當時的碉堡，為設計者特意保留，雖然現在已經失去以往的功能，卻是四四南村走過歷史的痕跡。</p>
+                
+        </div>
+
+
+        <!-- 總統府 -->
+        <svg class="circle" style="top: 970px; left: 490px;">
+            <a href="https://goo.gl/maps/Hzps25KptycfhDE16" target="_blank">
+                <circle cx="20" cy="20" r="20" fill="#000000" />
+            </a>
+        </svg>
+        <div class="tooltip">
+            <h2 style="font-size: 100px;">總統府  </h2>
+            <p style="font-size: 40px;">總統府建築風格屬後期文藝復興式，受英國建築家Norman Shaw的影響，又稱辰野式樣，立面充滿古典樣式的建築語彙，包括柱列、山牆、圓拱窗、牛眼窗、托座、羅馬柱式、複柱等。 柱頭為簡潔多立克柱式，牆身及柱身多飾橫帶，外觀極為華麗。</p>
+            </div>
+        <!-- 大稻埕碼頭 -->
+        <svg class="circle" style="top: 790px; left: 580px">
+            <a href="https://goo.gl/maps/Jv7wQryvuDdjdxxs5" target="_blank">
+                <circle cx="20" cy="20" r="20" fill="#000000" />
+            </a>
+        </svg>
+        <div class="tooltip">
+            <h2 style="font-size: 100px;">大稻埕碼頭 </h2>
+            <p style="font-size: 40px;">大稻埕碼頭位於淡水河畔，現今五號水門處（環河北路、民生西路口）。 大稻埕的發展歷史，與大稻埕碼頭有著密切的關係，淡水開港通商，外商洋行紛紛到此開設商號，促成大稻埕往後的繁華。 現今雖然碼頭功能不復當年，但已轉型為民眾休閒遊憩的去處。</p>
+            </div>
+        <!-- 關渡宮 -->
+        <svg class="circle" style="top: 130px; left: 220px">
+            <a href="https://goo.gl/maps/G5DG9E8gfPCLgcyk6" target="_blank">
+                <circle cx="20" cy="20" r="20" fill="#000000" />
+            </a>
+        </svg>
+        <div class="tooltip">
+            <h2 style="font-size: 100px;">關渡宮 </h2>
+            <p style="font-size: 40px;">關渡宮約在西元1661年創立，主祀媽祖，是臺灣北部最古老的媽祖廟，原稱靈山廟，位在靈山山頂。 相傳西元1895年，廟口的三棵老榕樹，竟然在同一個晚上枯死，居民認為可能是媽祖在向他們警告會有災難。 果然不久，日軍佔領關渡，到處燒殺，居民卻因為早有預防，所以能逃過災難。</p>
+            </div>
+        <!--臺北市立動物園-->
+        <svg class="circle" style="top: 1620px; left: 1340px">
+            <a href="https://goo.gl/maps/7A4dsMLzV5K28KNs9" target="_blank">
+                <circle cx="20" cy="20" r="20" fill="#000000" />
+            </a>
+        </svg>
+        <div class="tooltip">
+            <h2 style="font-size: 100px;">臺北市立動物園</h2>
+            <p style="font-size: 40px;">臺北市立動物園是中華民國臺灣臺北市的一座公立動物園，隸屬於臺北市政府教育局。 1914年創立於圓山地區，舊稱「圓山動物園」，與臺北市立兒童育樂中心（臺北市立兒童新樂園舊址，今圓山遺址）相鄰。 1986年，因圓山原址無法擴建，而遷至木柵區（今文山區），因此成為臺灣民眾現在所熟悉的「木柵動物園」。</p>
+            </div>
+        
+
+    </div>
+    
+    <script>
+        var circles = document.querySelectorAll('.circle circle');
+        var tooltips = document.querySelectorAll('.tooltip');
+
+        circles.forEach(function(circle, index) {
+        var tooltipTimeout; // 儲存延遲顯示的 timeout 計時器
+
+        circle.addEventListener('mouseenter', function(event) {
+            tooltipTimeout = setTimeout(function() {
+            tooltips[index].style.opacity = 1;
+            positionTooltip(tooltips[index], circle);
+            }, 400); // 延遲時間，單位為毫秒，這裡設定為 400 毫秒
+
+            circle.addEventListener('mouseleave', function(event) {
+            clearTimeout(tooltipTimeout); // 如果滑鼠離開圓形元素，清除延遲顯示的 timeout 計時器
+            tooltips[index].style.opacity = 0;
+            });
+        });
+        });
+    </script>
+</body>
+</html>
